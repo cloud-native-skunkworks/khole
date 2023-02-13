@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "release-please": "^15.7.0"
+  }
+}
