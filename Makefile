@@ -46,6 +46,13 @@ manifests: controller-gen ## Generate WebhookConfiguration, ClusterRole and Cust
 generate: controller-gen ## Generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
 	$(CONTROLLER_GEN) object:headerFile="hack/boilerplate.go.txt" paths="./..."
 
+.PHONY: release-manifests
+release-manifests: manifests kustomize
+	cd config/manager && $(KUSTOMIZE) edit set image controller=${IMG}
+	mkdir -p config/rendered/
+	echo building default overlay;\
+	$(KUSTOMIZE) build config/default > config/rendered/release.yaml;
+	
 .PHONY: fmt
 fmt: ## Run go fmt against code.
 	go fmt ./...
