@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-crash
+  namespace: default
+spec:
+  initContainers:
+  - name: wait
+    image: busybox
+    command: ['sleep', '5']
+  containers:
+  - name: fail
+    image: busybox
+    command: ['exit', '1']

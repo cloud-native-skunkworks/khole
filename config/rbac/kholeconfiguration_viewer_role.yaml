@@ -1,0 +1,27 @@
+# permissions for end users to view kholeconfigurations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kholeconfiguration-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: khole
+    app.kubernetes.io/part-of: khole
+    app.kubernetes.io/managed-by: kustomize
+  name: kholeconfiguration-viewer-role
+rules:
+- apiGroups:
+  - core.cloudnativeskunkworks.io
+  resources:
+  - kholeconfigurations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - core.cloudnativeskunkworks.io
+  resources:
+  - kholeconfigurations/status
+  verbs:
+  - get

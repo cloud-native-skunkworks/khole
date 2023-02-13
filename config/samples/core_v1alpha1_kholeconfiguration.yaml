@@ -1,0 +1,9 @@
+apiVersion: core.cloudnativeskunkworks.io/v1alpha1
+kind: KHoleConfiguration
+metadata:
+  name: kholeconfiguration
+spec:
+  output:
+    slack:
+      channelID: ""
+      token: ""

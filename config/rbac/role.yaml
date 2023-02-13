@@ -1,0 +1,59 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.cloudnativeskunkworks.io
+  resources:
+  - kholeconfigurations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.cloudnativeskunkworks.io
+  resources:
+  - kholeconfigurations/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.cloudnativeskunkworks.io
+  resources:
+  - kholeconfigurations/status
+  verbs:
+  - get
+  - patch
+  - update
