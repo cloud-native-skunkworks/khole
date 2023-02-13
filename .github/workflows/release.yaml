@@ -16,35 +16,13 @@ permissions:
   contents: read
 
 jobs:
-  release-please:
-    permissions:
-      contents: write  # for google-github-actions/release-please-action to create release commit
-      pull-requests: write  # for google-github-actions/release-please-action to create release PR
-    runs-on: ubuntu-latest
-
-    # Release-please creates a PR that tracks all changes
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        id: release
-        with:
-          command: manifest
-          token: ${{secrets.GITHUB_TOKEN}}
-          default-branch: main
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      release_tag_name: ${{ steps.release.outputs.tag_name }}
-
   build-oci:
     permissions:
       packages: write # to push the container image 
-    needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ needs.release-please.outputs.release_tag_name }}
+        uses: actions/checkout@v3  
 
       - name: Log in to the Container registry
         uses: docker/login-action@3da7dc6e2b31f99ef2cb9fb4c50fb0971e0d0139
@@ -85,9 +63,7 @@ jobs:
   release-assets:
     permissions:
       contents: write  # for softprops/action-gh-release to create GitHub release
-    needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
     steps:
         - name: Checkout
           uses: actions/checkout@v3
@@ -99,8 +75,4 @@ jobs:
           with:
             go-version: ${{ env.DEFAULT_GO_VERSION }}
         - run: |
-            make update-flagd
-            go mod tidy
-            make controller-gen
-            IMG=ghcr.io/open-feature/open-feature-operator:${{ needs.release-please.outputs.release_tag_name }} make helm-package
-            IMG=ghcr.io/open-feature/open-feature-operator:${{ needs.release-please.outputs.release_tag_name }} make release-manifests
+            make release-manifests
