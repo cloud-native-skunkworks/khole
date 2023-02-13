@@ -44,3 +44,11 @@ This is a typical kubebuilder project.
 It has no webhook so you can just `go run` as long as you have a valid `KUBECONFIG` env. You'll need to install the custom resources.
 
 If you want to build the docker image just override the `IMG` env variable in the make file e.g. `IMG=your-registry/khole:latest make docker-build`
+
+### Contributing
+
+Things that you could do to make this better
+
+- [ ] Add more outputs
+- [ ] Add some more protection/guards to code logic
+- [ ] Add some tests
