@@ -38,7 +38,7 @@ Apply the CR with your details
 kubectl apply -f config/samples/core_v1alpha1_kholeconfiguration.yaml
 ```
 
-### Development
+### Development
 
 This is a typical kubebuilder project. 
 It has no webhook so you can just `go run` as long as you have a valid `KUBECONFIG` env. You'll need to install the custom resources.
