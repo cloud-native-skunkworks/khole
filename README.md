@@ -27,9 +27,7 @@ An example Slack message
 ### Installation
 
 ```
-git clone https://github.com/cloud-native-skunkworks/khole.git
-make install 
-make deploy
+kubectl apply -f https://github.com/cloud-native-skunkworks/khole/releases/download/latest/release.yaml
 ```
 
 Apply the CR with your details
