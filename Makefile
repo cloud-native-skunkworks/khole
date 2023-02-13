@@ -1,6 +1,6 @@
 
 # Image URL to use all building/pushing image targets
-IMG ?= cnskunkworks/khole:v0.0.1 # x-release-please-version
+IMG ?= ghcr.io/cloud-native-skunkworks/khole:latest # x-release-please-version
 # ENVTEST_K8S_VERSION refers to the version of kubebuilder assets to be downloaded by envtest binary.
 ENVTEST_K8S_VERSION = 1.26.0
 
