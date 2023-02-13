@@ -52,3 +52,6 @@ Things that you could do to make this better
 - [ ] Add more outputs
 - [ ] Add some more protection/guards to code logic
 - [ ] Add some tests
+
+
+If you have an idea but no idea how to implement it, message me on CNCF slack (Alex Jones)
