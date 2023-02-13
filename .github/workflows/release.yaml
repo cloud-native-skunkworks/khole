@@ -56,7 +56,6 @@ jobs:
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
           labels: ${{ steps.meta.outputs.labels }}
           
   release-assets:
@@ -66,9 +65,7 @@ jobs:
     steps:
         - name: Checkout
           uses: actions/checkout@v3
-          with:
-            ref: ${{ needs.release-please.outputs.release_tag_name }}
-
+ 
         - name: Setup go
           uses: actions/setup-go@v3
           with:
