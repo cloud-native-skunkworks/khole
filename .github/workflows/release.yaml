@@ -75,3 +75,9 @@ jobs:
             go-version: ${{ env.DEFAULT_GO_VERSION }}
         - run: |
             make release-manifests
+        - name: Release
+          uses: softprops/action-gh-release@v1
+          with:
+            tag_name: latest
+            files: |
+              config/rendered/release.yaml
