@@ -1,6 +1,6 @@
 
 # Image URL to use all building/pushing image targets
-IMG ?= cnskunkworks/khole:latest
+IMG ?= cnskunkworks/khole:v0.0.1 # x-release-please-version
 # ENVTEST_K8S_VERSION refers to the version of kubebuilder assets to be downloaded by envtest binary.
 ENVTEST_K8S_VERSION = 1.26.0
 
@@ -52,7 +52,7 @@ release-manifests: manifests kustomize
 	mkdir -p config/rendered/
 	echo building default overlay;\
 	$(KUSTOMIZE) build config/default > config/rendered/release.yaml;
-	
+
 .PHONY: fmt
 fmt: ## Run go fmt against code.
 	go fmt ./...
