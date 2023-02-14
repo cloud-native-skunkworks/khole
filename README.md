@@ -2,6 +2,8 @@
 
 Sends alerts from crashed K8s pods to Slack. This is a simple tool that can be used to monitor your Kubernetes cluster.
 
+<img src="images/03.png" width="500px;">
+
 ```
 apiVersion: core.cloudnativeskunkworks.io/v1alpha1
 kind: KHoleConfiguration
@@ -18,11 +20,11 @@ spec:
 
 When a pod crashes or doesn't work properly, KHole will send a message to the configured outputs.
 
-<img src="images/01.png" width="800px;">
+<img src="images/01.png" width="500px;">
 
 An example Slack message
 
-<img src="images/02.png" width="800px;">
+<img src="images/02.png" width="400px;">
 
 ### Installation
 
